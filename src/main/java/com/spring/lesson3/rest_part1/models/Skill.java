@@ -21,7 +21,7 @@ public class Skill {
     private String title;
     private int value;
     @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private User user;
 }
 

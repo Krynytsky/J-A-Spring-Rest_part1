@@ -19,12 +19,11 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    //Show info only from users table
-    @JsonIgnore
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-//    create constrate  with JOIN the Skills table on user field
-//    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     private List<Skill> skills = new ArrayList<>();
+    private String email;
+    private String password;
 
     public User() {
     }
@@ -35,5 +34,10 @@ public class User {
 
     public User(String name) {
         this.name = name;
+    }
+
+    public User(String name, String email){
+        this.name = name;
+        this.email = email;
     }
 }
